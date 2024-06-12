@@ -1,7 +1,10 @@
 <template>
+  
   <div id="card">
     <p v-if="advice">{{ advice }}</p>
-    
+   
+    <v-btn variant="outlined" id='btn' @click="fetchAdvice"> Gerar novamente</v-btn>
+  
   </div>
 </template>
 
@@ -30,23 +33,30 @@ onMounted(fetchAdvice);
 <style scoped>
 #card {
     color:white; 
-    background-color: rgb(136, 48, 28);
-    padding: 8%;
+    background-color: darkslategray;
+    padding: 6%;
     position: relative;
     align-content: center;
     text-align: center;
-    width: 70%;
-    height: 40%;
-    margin-left: 15%;
-    margin-top: 15%;
+    width: 60%;
+    height: 30%;
+    margin-left:18%;
+    margin-top: 10%;
     margin: 0, auto;
-   
-  
+    
 }
 #card p {
 
-  font-size: xx-large;
-  font-weight: 500;
+  font-size:x-large;
+  font-weight: 200;
+}
+#btn{
+  
+margin-top: 4%;
+background-color: rgb(0, 0, 0);
+font-size: x-small;
+
+  
 }
 </style>
 

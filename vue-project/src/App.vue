@@ -31,10 +31,15 @@ onMounted(fetchAdvice);
 #card {
     color:white; 
     background-color: rgb(136, 48, 28);
-    padding: 10%;
+    padding: 8%;
     position: relative;
     align-content: center;
     text-align: center;
+    width: 70%;
+    height: 40%;
+    margin-left: 15%;
+    margin-top: 15%;
+    margin: 0, auto;
    
   
 }
@@ -44,3 +49,5 @@ onMounted(fetchAdvice);
   font-weight: 500;
 }
 </style>
+
+

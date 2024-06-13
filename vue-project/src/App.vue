@@ -1,7 +1,7 @@
 <template>
   <div id="card">
     <p v-if="advice">{{ advice }}</p>
-    <v-btn variant="outlined" id='btn' @click="fetchAdvice"> Gerar novamente</v-btn>
+    <v-btn variant="outlined" id='btn' @click="fetchAdvice"> Gerar frase</v-btn>
   </div>
 </template>
 
@@ -12,13 +12,13 @@ import axios from 'axios';
 const advice = ref('');
 const error = ref('');
 
-const fetchAdvice = async () => {
+async function fetchAdvice() {
+
     const response = await axios.get('https://api.adviceslip.com/advice');
     advice.value = response.data.slip.advice;
-  
-};
 
-onMounted(fetchAdvice);
+}
+
 </script>
 
 <style scoped>

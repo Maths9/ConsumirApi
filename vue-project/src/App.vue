@@ -11,11 +11,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-// Definindo a propriedade reativa advice e error
+
 const advice = ref('');
 const error = ref('');
 
-// Função para buscar um conselho da API usando fetch
 const fetchAdvice = async () => {
   
     const response = await fetch('https://api.adviceslip.com/advice');
@@ -23,10 +22,10 @@ const fetchAdvice = async () => {
       throw new Error(`Erro ao buscar conselho: ${response.statusText}`);
     }
     const data = await response.json();
-    advice.value = data.slip.advice; // Atualizando a propriedade reativa com o conselho
+    advice.value = data.slip.advice; 
   }
 ;
-// Chamando a função fetchAdvice quando o componente é montado
+
 onMounted(fetchAdvice);
 </script>
 

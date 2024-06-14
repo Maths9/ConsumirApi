@@ -1,24 +1,36 @@
+
 <template>
   <div id="card">
     <p v-if="advice">{{ advice }}</p>
+    <p v-if="error">{{ error }}</p>
     <v-btn variant="outlined" id='btn' @click="fetchAdvice"> Gerar frase</v-btn>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import axios from '../services/BaseService';
 
-const advice = ref('');
-const error = ref('');
+const advice = ref<string>('');
+const error = ref<string>('');
 
 async function fetchAdvice() {
-
-    const response = await axios.get('https://api.adviceslip.com/advice');
-    advice.value = response.data.slip.advice;
-
+  try {
+    const response = await axios.get('/advice');
+    console.log('Response:', response);
+    console.log('Response data:', response.data);
+    if (response.data && response.data.slip) {
+      advice.value = response.data.slip.advice;
+    } else {
+      throw new Error('Unexpected response format');
+    }
+  } catch (err) {
+    console.log('Error:', err);
+    error.value = `Erro ao buscar conselho: ${err.message}`;
+  }
 }
 
+onMounted(fetchAdvice);
 </script>
 
 <style scoped>

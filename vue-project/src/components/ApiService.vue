@@ -11,6 +11,7 @@
 import { ref, onMounted } from 'vue';
 import axios from '../services/BaseService';
 
+
 const advice = ref<string>('');
 const error = ref<string>('');
 
